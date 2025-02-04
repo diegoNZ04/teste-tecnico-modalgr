@@ -1,0 +1,92 @@
+<div class="container">
+  <form [formGroup]="userForm" class="form-container">
+    <h2>Cadastro de Usuário</h2>
+
+    <!-- Campo Nome -->
+    <mat-form-field class="full-width">
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="name" placeholder="Digite seu nome" />
+      @if(userForm.get('name').hasError('required') &&
+      userForm.get('name').touched){
+      <mat-error> Nome é obrigatório </mat-error>
+      } @if(userForm.get('name').hasError('maxlenght') &&
+      userForm.get('name').touched){
+      <mat-error> Nome deve ter no máximo 150 caracteres </mat-error>
+      } @if(userForm.get('name').hasError('pattern') &&
+      userForm.get('name').touched){
+      <mat-error> Nome deve conter apenas letras </mat-error>
+      }
+    </mat-form-field>
+
+    <!-- Campo CPF -->
+    <mat-form-field class="full-width">
+      <mat-label>CPF</mat-label>
+      <input
+        matInput
+        formControlName="cpf"
+        placeholder="000.000.000-00"
+        mask="000.000.000-00"
+      />
+      @if(userForm.get('cpf').hasError('required') &&
+      userForm.get('cpf').touched){
+      <mat-error> CPF é obrigatório </mat-error>
+      }
+    </mat-form-field>
+
+    <!-- Campo Nascimento -->
+    <mat-form-field class="full-width">
+      <mat-label>Data de Nascimento</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        formControlName="birthDate"
+        required
+      />
+      <mat-hint>DD/MM/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      @if(userForm.get('birthDate').hasError('required') &&
+      userForm.get('birthDate').touched){
+      <mat-error> Data de nascimento é obrigatória </mat-error>
+      }
+    </mat-form-field>
+
+    <!-- Campo Email -->
+    <mat-form-field class="full-width">
+      <mat-label>E-mail</mat-label>
+      <input
+        matInput
+        formControlName="email"
+        placeholder="exemplo@email.com"
+        required
+      />
+      @if(userForm.get('email').hasError('required') &&
+      userForm.get('email').touched){
+      <mat-error> E-mail é obrigatório </mat-error>
+      } @if(userForm.get('email').hasError('maxlenght') &&
+      userForm.get('email').touched){
+      <mat-error> E-mail deve ter no máximo 200 caracteres </mat-error>
+      } @if(userForm.get('email').hasError('email') &&
+      userForm.get('email').touched){
+      <mat-error> E-mail inválido </mat-error>
+      }
+    </mat-form-field>
+
+    <!-- Campo CEP -->
+    <mat-form-field class="full-width">
+      <mat-label>CEP</mat-label>
+      <input
+        matInput
+        formControlName="cep"
+        placeholder="00000-000"
+        mask="00000-000"
+      />
+      @if(userForm.get('cep').hasError('required') &&
+      userForm.get('cep').touched){
+      <mat-error> CEP é obrigatório </mat-error>
+      }
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Cadastrar</button>
+  </form>
+</div>
