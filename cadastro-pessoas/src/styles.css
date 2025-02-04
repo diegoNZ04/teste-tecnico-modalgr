@@ -14,6 +14,12 @@ body {
   padding: 0 1rem;
 }
 
+.container-table {
+  max-width: 1500px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
 .form-container {
   background: white;
   padding: 2rem;
@@ -36,5 +42,11 @@ body {
   margin-bottom: 1rem;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

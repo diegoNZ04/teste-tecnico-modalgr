@@ -1,8 +1,4 @@
-export interface UserModel {
-  nome: string;
-  email: string;
-  idade: number;
-  cpf: string;
+export type CepType = {
   cep: string;
   logradouro: string;
   bairro: string;

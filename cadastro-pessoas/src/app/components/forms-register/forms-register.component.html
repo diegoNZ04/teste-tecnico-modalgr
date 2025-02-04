@@ -40,6 +40,8 @@
         matInput
         [matDatepicker]="picker"
         formControlName="birthDate"
+        [max]="today"
+        [min]="limitedDate"
         required
       />
       <mat-hint>DD/MM/YYYY</mat-hint>
@@ -80,13 +82,52 @@
         formControlName="cep"
         placeholder="00000-000"
         mask="00000-000"
+        (blur)="getCep()"
       />
       @if(userForm.get('cep').hasError('required') &&
       userForm.get('cep').touched){
       <mat-error> CEP é obrigatório </mat-error>
+      } @if(userForm.get('cep').hasError('pattern') &&
+      userForm.get('cep').touched){
+      <mat-error> Cep deve conter 8 dígitos numéricos </mat-error>
       }
     </mat-form-field>
 
-    <button mat-raised-button color="primary" type="submit">Cadastrar</button>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      (click)="saveUser()"
+      [disabled]="!userForm.valid"
+    >
+      Cadastrar
+    </button>
   </form>
+</div>
+
+<div class="container-table">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        @for (column of displayedColumns; track $index) {
+        <th>{{ column }}</th>
+        }
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        @for(u of users; track $index){
+        <td>{{ u.nome }}</td>
+        <td>{{ u.email }}</td>
+        <td>{{ u.idade }}</td>
+        <td>{{ u.cep }}</td>
+        <td>{{ u.logradouro }}</td>
+        <td>{{ u.bairro }}</td>
+        <td>{{ u.localidade }}</td>
+        <td>{{ u.estado }}</td>
+        }
+      </tr>
+    </tbody>
+  </table>
 </div>
