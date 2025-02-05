@@ -10,6 +10,7 @@ Este é um sistema de cadastro de pessoas desenvolvido em Angular, que permite o
 - Bootstrap: Framework de CSS para estilização rápida.
 - rxjs: Biblioteca para programação reativa, utilizada para requisições HTTP e gerenciamento de estados.
 - ngx-mask: Biblioteca para formatação de campos como CPF e CEP.
+- Vercel: Hospedagem do site.
 
 ## Acessando
 
